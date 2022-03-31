@@ -18,10 +18,10 @@ public class UserService {
 		return userRepository.findAll();
 	}
 
-	public User save(User customer) {
-		userRepository.save(customer);
+	public User save(User user) {
+		userRepository.save(user);
 
-		return customer;
+		return user;
 	}
 
 	public String findAndDeleteById(String id) {
@@ -49,14 +49,14 @@ public class UserService {
 
 	}
 
-	public String update(String id, User customer) {
+	public String update(String id, User user) {
 
 		String response = "";
 		Optional<User> customerFound = userRepository.findById(id);
 
 		if (customerFound.isPresent()) {
 
-			customerFound.get().setFirstName(customer.getFirstName());
+			customerFound.get().setFirstName(user.getFirstName());
 			userRepository.save(customerFound.get());
 			response += "customer updated";
 
@@ -94,6 +94,13 @@ public class UserService {
 
 		userRepository.deleteByLastName(lastname);
 
+	}
+
+	public Optional<User> findOneById(String id) {
+		
+		Optional<User> customerFound = userRepository.findById(id);
+		
+		return customerFound;
 	}
 
 }
