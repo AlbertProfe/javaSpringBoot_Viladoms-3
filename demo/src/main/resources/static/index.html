@@ -27,9 +27,23 @@
                 <div class="form-group">
                     <label for="contenttosend">Send some text to server Spring Boot Websocket Stomp</label>
                     <input type="text" id="contenttosend" class="form-control" placeholder="Your text here...">
+                    <button id="send" class="btn btn-default" type="submit">Send</button>
                 </div>
-                <button id="send" class="btn btn-default" type="submit">Send</button>
+                
             </form>
+        </div>
+    </div>
+     <div class="row">
+        <div class="col-md-12">
+            <table id="connectionstatus" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Connection Status WebSocket </th>
+                </tr>
+                </thead>
+                <tbody id="connectionstatusline">
+                </tbody>
+            </table>
         </div>
     </div>
     <div class="row">

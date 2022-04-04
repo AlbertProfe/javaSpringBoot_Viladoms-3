@@ -18,6 +18,7 @@ function connect() {
     stompClient.connect({}, function (frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
+        showConnections(frame);
         stompClient.subscribe('/message/response', function (textmessage) {
 			console.log('Response from server: ' + textmessage);
             showTextMessage(JSON.parse(textmessage.body).content);
@@ -30,6 +31,7 @@ function disconnect() {
         stompClient.disconnect();
     }
     setConnected(false);
+     showConnections("Disconnected");
     console.log("Disconnected");
 }
 
@@ -41,6 +43,10 @@ function sendText() {
 function showTextMessage(message) {
 	console.log('Response from server: ' + message);
     $("#response").append("<tr><td>" + message + "</td></tr>");
+}
+
+function showConnections(message) {
+    $("#connectionstatusline").append("<tr><td>" + message + "</td></tr>");
 }
 
 $(function () {
