@@ -9,7 +9,7 @@ function setConnected(connected) {
     else {
         $("#conversation").hide();
     }
-    $("#texting").html("");
+    $("#response").html("");
 }
 
 function connect() {
@@ -18,8 +18,9 @@ function connect() {
     stompClient.connect({}, function (frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
-        stompClient.subscribe('/content/texting', function (textMessage) {
-            showTextMessage(JSON.parse(textMessage.body).content);
+        stompClient.subscribe('/message/response', function (textmessage) {
+			console.log('Response from server: ' + textmessage);
+            showTextMessage(JSON.parse(textmessage.body).content);
         });
     });
 }
@@ -33,11 +34,13 @@ function disconnect() {
 }
 
 function sendText() {
-    stompClient.send("/app/sendMessage", {}, JSON.stringify({'content': $("#content").val()}));
+	console.log('About to send: ' + $("#contenttosend").val()  );
+    stompClient.send("/app/sendmessage", {}, JSON.stringify({'content': $("#contenttosend").val()}));
 }
 
 function showTextMessage(message) {
-    $("#textmessages").append("<tr><td>" + message + "</td></tr>");
+	console.log('Response from server: ' + message);
+    $("#response").append("<tr><td>" + message + "</td></tr>");
 }
 
 $(function () {

@@ -9,12 +9,12 @@ import org.springframework.web.util.HtmlUtils;
 public class MessageController {
 	
 	
-	@MessageMapping("/sendMessage")
-	@SendTo("/message/wording")
-	public TextMessage manageMessage(TextMessage inputMessage) {
+	@MessageMapping("/sendmessage")
+	@SendTo("/message/response")
+	public TextMessage textMessage(TextMessage inputMessage) {
 		
-		
-		return new TextMessage ("This is the response from server. This is your message" + HtmlUtils.htmlEscape(inputMessage.getContent()));
+		System.out.println("inputMessage" + inputMessage);
+		return new TextMessage ("This is the response from server. This is your original message: " + HtmlUtils.htmlEscape(inputMessage.getContent()) + " Please, enjoy Websockets!");
 	}
 	
 	
