@@ -1,6 +1,7 @@
 var stompClient = null;
 
 connect();
+
 function setConnected(connected) {
    
     if (connected) {
@@ -40,6 +41,7 @@ function sendLogin() {
 	
 	console.log('About to send userName: ' + $("#username").val());
 	console.log('About to send password: ' + $("#password").val());
+	
     stompClient.send("/app/login", {}, JSON.stringify({'userName': $("#username").val() , 'password': $("#password").val() } ));
 }
 
