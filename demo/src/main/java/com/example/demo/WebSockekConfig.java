@@ -9,6 +9,9 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 @Configuration
 @EnableWebSocketMessageBroker
 public class WebSockekConfig implements WebSocketMessageBrokerConfigurer {
+	
+	//we create routes to define operations and functions 
+	//we do that with MessageBrokerRegistry object
 	@Override
 	public void configureMessageBroker(MessageBrokerRegistry configuration) {
 
@@ -16,6 +19,10 @@ public class WebSockekConfig implements WebSocketMessageBrokerConfigurer {
 		configuration.setApplicationDestinationPrefixes("/app");
 
 	}
+	
+	//we assign an endpoint to the stompclient, that is, to make a real connection
+	//connection between client-server, client-js and server-java
+	//how? with StompEndpointRegistry object
 	@Override
 	public void registerStompEndpoints (StompEndpointRegistry registry) {
 		registry.addEndpoint("/gs-guide-websocket").withSockJS();

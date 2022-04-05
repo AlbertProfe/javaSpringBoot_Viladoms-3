@@ -16,10 +16,13 @@
 		<java.version>11</java.version>
 	</properties>
 	<dependencies>
+	
+		<!-- web socket dependencies -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-websocket</artifactId>
 		</dependency>
+		<!-- web socket dependencies -->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

@@ -8,7 +8,6 @@ import org.springframework.web.util.HtmlUtils;
 @Controller
 public class MessageController {
 	
-	
 	@MessageMapping("/sendmessage")
 	@SendTo("/message/response")
 	public TextMessage textMessage(TextMessage inputMessage) {

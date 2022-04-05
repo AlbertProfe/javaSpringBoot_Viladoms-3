@@ -16,6 +16,7 @@ function connect() {
     var socket = new SockJS('/gs-guide-websocket');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
+
         setConnected(true);
         console.log('Connected: ' + frame);
         showConnections(frame);
@@ -31,7 +32,7 @@ function disconnect() {
         stompClient.disconnect();
     }
     setConnected(false);
-     showConnections("Disconnected");
+    showConnections("Disconnected");
     console.log("Disconnected");
 }
 
