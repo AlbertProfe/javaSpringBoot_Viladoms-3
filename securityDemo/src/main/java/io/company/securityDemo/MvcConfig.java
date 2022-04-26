@@ -9,12 +9,12 @@ public class MvcConfig implements WebMvcConfigurer {
 	
 	//let s configure paths and routes of my project
 	//to define home and hello
-
-	public void configurationController (ViewControllerRegistry registry) {
+	@Override
+	public void addViewControllers (ViewControllerRegistry registry) {
 		registry.addViewController("/home").setViewName("home");
 		registry.addViewController("/").setViewName("home");
 		registry.addViewController("/hello").setViewName("hello");
-		registry.addViewController("/login").setViewName("login");
+		registry.addViewController("/login").setViewName("login.html");
 		registry.addViewController("/logout").setViewName("logout");
 		
 		

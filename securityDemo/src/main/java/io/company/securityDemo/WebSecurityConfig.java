@@ -18,8 +18,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter  {
 	//so let s authorize some sites and others not
 	//let define which one does the login and which one does the logout
 	//besides we MUST users and passwords
-	
-	public void configure (HttpSecurity http) throws Exception {
+	@Override
+	protected void configure (HttpSecurity http) throws Exception {
 		
 		http
 			.authorizeRequests()
@@ -37,15 +37,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter  {
 	}
 	@Bean
 	@Override
-	public UserDetailsService userDetailsService () {
+	public UserDetailsService userDetailsService()  {
 		@SuppressWarnings("deprecation")
 		UserDetails user = User.withDefaultPasswordEncoder()
-							.username("user")
-							.password("password")
-							.roles()
+							.username("albert")
+							.password("1234")
+							.roles("USER")
 							.build();
-				
-				
+		
 		return new InMemoryUserDetailsManager(user);
 	}
 
