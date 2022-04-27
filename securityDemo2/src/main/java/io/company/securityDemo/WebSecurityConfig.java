@@ -25,9 +25,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter  {
 	//so let s authorize some sites and others not
 	//let define which one does the login and which one does the logout
 	//besides we MUST users and passwords
-	protected void configure (HttpSecurity http, AuthenticationManagerBuilder auth) throws Exception {
+	@Override
+	protected void configure (HttpSecurity http) throws Exception {
 		
-		auth.authenticationProvider(authProvider());
+		//auth.authenticationProvider(authProvider());
 		http
 			.authorizeRequests()
 				.antMatchers("/", "/home")
