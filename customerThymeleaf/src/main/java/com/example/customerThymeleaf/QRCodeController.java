@@ -16,7 +16,7 @@ public class QRCodeController {
 	@Autowired
 	private  QRService qrService;
 	
-	@RequestMapping("/")
+	@RequestMapping("/homeQR")
 	public String index() {
 		return "index";
 	}
@@ -35,7 +35,8 @@ public class QRCodeController {
 	public void createQR (String qrText, HttpServletResponse response) throws IOException {
 		
 		response.setContentType("image/png");
-        byte[] qrCode = qrService.generateQRCode(qrText, 700, 700);
+		
+        byte[] qrCode = qrService.generateQRCode(qrText, 200, 200);
         OutputStream outputStream = response.getOutputStream();
         outputStream.write(qrCode);
 		
